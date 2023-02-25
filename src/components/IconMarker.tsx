@@ -33,11 +33,35 @@ export const IconMarker: React.FC<IconMarkerProps> = ({
 
   return (
     <SimpleMarker latitude={latitude} longitude={longitude}>
-      <div className="IconMarkerWrap" title={desc}>
+      <div
+        className="IconMarkerWrap"
+        title={title + " " + desc}
+        style={{
+          opacity: (() => {
+            if (!currentZoom) {
+              return 1;
+            } else {
+              if (currentZoom < 8) {
+                return 0.7;
+              } else if (currentZoom < 9) {
+                return 0.75;
+              } else if (currentZoom < 12) {
+                return 0.8;
+              } else if (currentZoom < 13) {
+                return 0.85;
+              } else if (currentZoom < 14) {
+                return 0.9;
+              } else {
+                return 1;
+              }
+            }
+          })(),
+        }}
+      >
         {currentZoom < 16 ? (
           <div className="IconMarkerBalloon">
             <div className="IconMarkerBalloonTitle IconMarkerBalloonTitleMoreZoom">
-              {title}...
+              {currentZoom < 13 ? "" : title}...
             </div>
           </div>
         ) : (
