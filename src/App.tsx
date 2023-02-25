@@ -57,7 +57,7 @@ function App() {
           longitude: 138.35,
           zoom: 4,
         }}
-        hash={false}
+        hash={true}
         maxZoom={22}
         maxPitch={85}
       >

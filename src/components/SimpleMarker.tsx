@@ -4,7 +4,7 @@ type SimpleMarkerProps = {
   latitude: number;
   longitude: number;
   zIndex?: number;
-  onClick?: (e: mapboxgl.MapboxEvent<MouseEvent>) => {};
+  onClick?: (e: mapboxgl.MapboxEvent<MouseEvent>) => void;
   children?: JSX.Element;
 };
 

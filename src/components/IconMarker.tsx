@@ -1,7 +1,7 @@
 import { SimpleMarker } from "./SimpleMarker";
 import "./IconMarker.css";
-import { useMap } from "react-map-gl";
-import { useEffect, useState } from "react";
+import { MapboxEvent, useMap } from "react-map-gl";
+import { useCallback, useEffect, useState } from "react";
 
 type IconMarkerProps = {
   latitude: number;
@@ -31,8 +31,19 @@ export const IconMarker: React.FC<IconMarkerProps> = ({
     });
   }, []);
 
+  const flyTo = useCallback(
+    (e: MapboxEvent<MouseEvent>) => {
+      if (!map) return;
+
+      if (currentZoom < 16) {
+        map.flyTo({ center: [longitude, latitude], zoom: currentZoom + 4 });
+      }
+    },
+    [map, currentZoom]
+  );
+
   return (
-    <SimpleMarker latitude={latitude} longitude={longitude}>
+    <SimpleMarker latitude={latitude} longitude={longitude} onClick={flyTo}>
       <div
         className="IconMarkerWrap"
         title={title + " " + desc}
