@@ -53,9 +53,9 @@ function App() {
         mapStyle="https://tile.openstreetmap.jp/styles/osm-bright/style.json"
         attributionControl={true}
         initialViewState={{
-          latitude: 35.71527,
-          longitude: 139.77269,
-          zoom: 15,
+          latitude: 37.69,
+          longitude: 138.35,
+          zoom: 4,
         }}
         hash={false}
         maxZoom={22}
